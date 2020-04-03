@@ -30,9 +30,9 @@ const isCapitalized = (str) => {
   // Solution code here...
   let regex = /[A-Z][a-z]*/g;
   let cap = str.match(regex);
-  console.log(null);
+  // console.log(null);
   let hey = [];
-  console.log(null && hey);
+  // console.log(null && hey);
   
   return cap || hey
 };
@@ -70,11 +70,13 @@ Do not use the vertical bar (pipe) in your pattern.
 
 const matchMonth = (input) => {
   // Solution code here...
-  let regex = /\w/g;
-  if (regex.toUpperCase === 'OCT'||regex.toUpperCase === 'OCTOBER'){
-    return true
-  }
-  else{return false}
+  if (input.length ===7 ||input.length ===3){
+    let regex = /\wct\w*/g;
+    if (regex.test(input)){
+      return true
+    }
+    else{return false}
+}
   
 };
 
@@ -90,6 +92,8 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 
 const noPunctuation = str => {
   // Solution code here...
+  let regex =/\w\w*\s/g;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,6 +110,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 
 let hangman = (str) => {
   // Solution code here...
+  let regex = /[a,e,i,o,u]/gi;
+  return str.replace(regex,'_');
 };
 
 /* ------------------------------------------------------------------------------------------------
