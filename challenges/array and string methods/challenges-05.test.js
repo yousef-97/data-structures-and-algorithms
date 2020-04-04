@@ -165,7 +165,7 @@ const removeEvenValues = (arr) => {
             i--;
         }
     }
-    console.log(arr);
+    // console.log(arr);
     return arr;
 };
 
@@ -207,6 +207,12 @@ Write a function named totalSumCSV that, given a string of comma-separated value
 const totalSumCSV = (str) => {
   let total = 0;
   // Solution code here...
+  let arr = str.split(',');
+  arr.forEach(val=>{
+    if (typeof(Number(val))=== 'number'){
+      total+=Number(val);
+    }
+  })
   return total;
 };
 
@@ -221,6 +227,17 @@ For example, removeVowels('gregor') returns 'grgr'.
 
 const removeVowels = (str) => {
   // Solution code here...
+  let vowels = ['i','u','e','o','a'];
+  let newOne = str.split('');
+  // console.log(str);
+  // console.log(newOne);
+  vowels.forEach(val=>{
+    if(newOne.includes(val)){
+      newOne.splice(newOne.indexOf(val),1);
+      str =newOne.join('');
+    }
+  })
+  return str;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -235,6 +252,35 @@ Similarly, extractVowels('The quick brown fox') returns ['Th qck brwn fx', 'eioo
 
 const extractVowels = (str) => {
   // Solution code here...
+  let vowels = ['i','u','e','o','a'];
+  let newOne = str.split('');
+  let vol ;
+  let volArr = [];
+  let lastArr = [];
+  // newOne.forEach(val=>{
+    for(let i =0;i<newOne.length;i++){
+    if(vowels.includes(newOne[i])){
+      // vol = newOne.slice(newOne.indexOf(val),newOne.indexOf(val)+1);
+      // console.log(newOne[i]);
+      volArr.push(newOne[i]);
+      newOne.splice(i,1);
+      i--;
+    }
+  }
+  // })
+ 
+  str =newOne.join('');
+  lastArr.push(str);
+
+  volArr.sort((a,b)=>{
+    return a>b
+  })
+  console.log(volArr);
+  vol = volArr.join('');
+  lastArr.push(vol);
+
+  return lastArr;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
