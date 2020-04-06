@@ -94,6 +94,8 @@ const hasChildrenValues = (arr, character) => {
   // Solution code here...
   for (let obj of arr){
     let hi = Object.values(obj);
+    // console.log(hi);
+    // console.log(hi.includes(character));
     if (hi.includes(character)){
       return true;
     }
@@ -113,7 +115,7 @@ The input and output of this function are the same as the input and output from 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
   let hi = Object.entries(arr);
-  console.log(hi);
+  // console.log(hi);
   for (let obj of hi){
   if (Object.entries().includes(character)){
     return true;
