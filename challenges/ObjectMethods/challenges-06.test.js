@@ -7,7 +7,8 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
+const courseInfo = {
+  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
@@ -72,7 +73,7 @@ let characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
-  for (let obj of arr){
+  for (let obj of arr) {
     houses.push(obj.house);
   }
   return houses;
@@ -92,9 +93,11 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  for (let obj of arr){
+  for (let obj of arr) {
     let hi = Object.values(obj);
-    if (hi.includes(character)){
+    // console.log(hi);
+    // console.log(hi.includes(character));
+    if (hi.includes(character)) {
       return true;
     }
   }
@@ -112,15 +115,15 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
-  let hi = Object.entries(arr);
-  console.log(hi);
-  for (let obj of hi){
-  if (Object.entries().includes(character)){
-    return true;
-  }
-}
-return false;
+  for (let val of arr) {
 
+    if (val.name === character) {
+      let hi = Object.entries(val.children);
+      console.log(hi);
+      if (hi.length) { return true }
+      else { return false }
+    }
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -131,6 +134,19 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  let allCharacters = arr.length;
+  arr.forEach(val => {
+    if (val.children.length>0)
+    {
+      allCharacters += val.children.length;
+    }
+    if (val.spouse)
+    {
+      allCharacters ++;
+    }
+  });
+
+  return allCharacters;
 };
 
 /* ------------------------------------------------------------------------------------------------
