@@ -71,7 +71,6 @@ const divisibleByFiveTwoToThePower = (input) => {
             if (!(num%5) && typeof(num) ==="number"){arrOfArr.push(Math.pow(2,num))}
         })
             if(typeof(val[0])!=="number"){arrOfArr.push()}
-        console.log(val[0]);
         return arrOfArr;
 
     })
@@ -158,12 +157,18 @@ let findMaleAndFemale = (data) => {
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 5
 
-Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the shortest character.
+Write a function named findShortest that, given the Star Wars data from Challenge 4, uses any combination of filter, map and reduce to return the name of the shortest character.
 ------------------------------------------------------------------------------------------------ */
 
 let findShortest = (data) => {
     // Solution code here...
-};
+    return data.reduce((shortOne,val)=>{
+      if(Number(val.height) < Number(shortOne.height)){
+        return val;
+      }
+      return shortOne;
+    },data[0]).name;
+  };
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
