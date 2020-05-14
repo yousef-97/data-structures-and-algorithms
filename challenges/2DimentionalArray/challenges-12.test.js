@@ -83,6 +83,17 @@ const errands = [
 
 const howManyTreats = (arr) => {
     // Solution code here...
+    let treatsNum;
+    arr.forEach(val=>{
+        val.items.forEach(elm=>{
+            if (elm.name.toUpperCase() ==='TREATS'){
+                treatsNum = elm.quantity;
+            }
+        })
+
+    })
+    
+    return treatsNum;
  
 };
 
@@ -106,6 +117,11 @@ The top row of the board is considered row zero and row numbers increase as they
 
 const battleship = (board, row, col) => {
     //  Solution code here...
+    // console.log(board[row][col]);
+    if(board[row][col]==='#'){
+        return 'hit';
+    }
+    else return 'miss';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -118,6 +134,17 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 
 const calculateProduct = (numbers) => {
     // Solution code here...
+    let hi = numbers.reduce((acc,val)=>{
+        // console.log(acc)
+        acc = acc * val.reduce((acc1,num)=>{
+            acc1 = acc1*num;
+            return acc1;
+        },1)
+        // console.log(acc)
+        return acc;
+    },1)
+    // console.log(hi);
+    return hi
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -138,6 +165,19 @@ const weeklyTemperatures = [
 
 const averageDailyTemperature = (weather) => {
     // Solution code here...
+    let count = 0;
+    let hi = weather.reduce((acc,val)=>{
+        // console.log(acc)
+        count+=val.length;
+        acc = acc + val.reduce((acc1,num)=>{
+            acc1 = acc1+num;
+            return acc1;
+        },0)
+        // console.log(acc)
+        return acc;
+    },0)
+    // console.log(hi);
+    return hi/count;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -159,6 +199,13 @@ let lowestWeeklyTemperatureData = [
 
 const lowestWeeklyAverage = (weather) => {
     // Solution code here...
+    return weather.reduce((acc,val) => {
+        let avgWeek =  (val.reduce((acc1,elm) =>{
+          return acc1+=elm;
+        },0.0)/val.length)
+        if(acc > avgWeek) acc = avgWeek;
+        return acc;
+      },1000);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -175,6 +222,19 @@ For example, excel('1,1,1\n4,4,4\n9,9,9') returns [3, 12, 27].
 
 const excel = (str) => {
     // Solution code here...
+    let theRows = str.split('\n');
+    // console.log(theRows);
+    theRows = theRows.map(val=>{
+        return val.split(',').map(ele=>{
+            return Number(ele)
+        }).reduce((acc,num)=>{
+            acc+=num;
+            return acc
+        },0)
+        
+    })
+    return theRows
+    
 };
 
 /* ------------------------------------------------------------------------------------------------
