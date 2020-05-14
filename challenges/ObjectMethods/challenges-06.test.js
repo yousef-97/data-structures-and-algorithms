@@ -119,7 +119,7 @@ const hasChildrenEntries = (arr, character) => {
 
     if (val.name === character) {
       let hi = Object.entries(val.children);
-      console.log(hi);
+      // console.log(hi);
       if (hi.length) { return true }
       else { return false }
     }
@@ -162,6 +162,15 @@ For example: [{ house: 'Stark', members: 7 }, { house: 'Arryn', members: 3 }, ..
 const houseSize = (arr) => {
   const sizes = [];
   // Solution code here...
+ 
+  arr.forEach(val=>{
+    
+    sizes.push({
+      house:val.house,
+      members:(Number(Boolean(val.name))+Number(Boolean(val.spouse))+val.children.length)
+    })  
+    
+  })
   return sizes;
 };
 
@@ -186,6 +195,14 @@ const deceasedSpouses = ['Catelyn', 'Lysa', 'Robert', 'Khal Drogo', 'Alerie'];
 const houseSurvivors = (arr) => {
   const survivors = [];
   // Solution code here...
+  arr.forEach(val=>{
+    
+    survivors.push({
+      house:val.house,
+      members:(Number(Boolean(val.name))+val.children.length)
+    })  
+    
+  })
   return survivors;
 };
 
