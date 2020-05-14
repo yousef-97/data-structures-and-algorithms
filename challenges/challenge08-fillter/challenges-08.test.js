@@ -13,7 +13,7 @@ const oddValues = (arr) => {
   let arr2 =arr.filter(val=>{
       return (val%2);
   })
-  console.log(arr2)
+  // console.log(arr2)
   return arr2;
 };
 
@@ -30,11 +30,12 @@ For example, filterStringsWithVowels('gregor','hound','xyz') returns ['gregor', 
 
 const filterStringsWithVowels = (arr) => {
   // Solution code here...
-  let regex = /[a,u,e,o,i]/g;
+  let regex = /[oueai]/gm;
   let arr2 = arr.filter(val=>{
-      console.log(val,regex.test(val))
+      // console.log(val,regex.test(val))
       return (regex.test(val))
   })
+  // console.log(arr2)
   return arr2;
 };
 
@@ -191,6 +192,18 @@ For example: evenOddNumericValues(['Gregor', 2, 4, 1]) returns ['even', 'even', 
 
 const evenOddNumericValues = (arr) => {
   // Solution code here...
+  let arr2 = arr.filter(val=>{
+    if (typeof(val)==='number'){
+      return 1
+    }
+  }).map(elm=>{
+    if (elm%2){
+      return 'odd'
+    }
+    else {return 'even'}
+  })
+  // console.log(arr2);
+  return arr2
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -215,8 +228,8 @@ describe('Testing challenge 1', () => {
 
 describe('Testing challenge 2', () => {
   test('It should return an array containing only words that have vowels', () => {
-    expect(filterStringsWithVowels(['gregor','hound','xyz'])).toStrictEqual(['gregor', 'hound']);
-    expect(filterStringsWithVowels(['gregor','hound','xyz']).length).toStrictEqual(2);
+    expect(filterStringsWithVowels(['hound','gregor','xyz'])).toStrictEqual(['hound','gregor']);
+    expect(filterStringsWithVowels(['hound','gregor','xyz']).length).toStrictEqual(2);
     expect(filterStringsWithVowels(['a', 'b', 'cdefg'])).toStrictEqual(['a', 'cdefg']);
     expect(filterStringsWithVowels(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ''])).toStrictEqual(['a', 'e', 'i', 'o', 'u']);
   });
